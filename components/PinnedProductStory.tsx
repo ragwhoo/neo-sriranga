@@ -94,8 +94,7 @@ export default function PinnedProductStory() {
         onUpdate: (self) => {
           if (self.progress > 0) {
             gsap.set(pin, {
-              opacity: 1 - self.progress,
-              scale: 1 - self.progress * 0.3,
+              opacity: 1 - self.progress * 0.5,
               y: -self.progress * 200,
             });
           }
