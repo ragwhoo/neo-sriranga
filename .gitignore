@@ -11,3 +11,8 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+/sriranga4k
+*.htm
+*.txt
+*.html
+Moonbase Delta.png
