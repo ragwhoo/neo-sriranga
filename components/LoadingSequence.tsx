@@ -29,7 +29,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
     if (imagesLoaded < totalImages) return;
 
     const elapsed = Date.now() - startTimeRef.current;
-    const minDisplay = 2500;
+    const minDisplay = 1200;
     const remaining = Math.max(0, minDisplay - elapsed);
 
     const timer = setTimeout(() => {
@@ -39,7 +39,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
 
       tl.to(wipeRef.current, {
         clipPath: 'circle(100% at 50% 46%)',
-        duration: 1.5,
+        duration: 0.7,
         ease: 'power2.inOut',
       });
 
@@ -66,15 +66,15 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
       });
       tl.to(wipeRef.current, {
         clipPath: `circle(0% at ${finalX} ${finalY})`,
-        duration: 1.2,
+        duration: 0.6,
         ease: 'power2.inOut',
       });
 
       tl.to(grainRef.current, {
         opacity: 0,
-        duration: 1.2,
+        duration: 0.3,
         ease: 'power2.inOut',
-      }, '<');
+      });
     }, remaining);
 
     return () => clearTimeout(timer);
