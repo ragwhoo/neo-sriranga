@@ -1,14 +1,31 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import LoadingSequence from '@/components/LoadingSequence';
+import Navbar from '@/components/Navbar';
 import ProductWorlds from '@/components/ProductWorlds';
+import Sections from '@/components/Sections';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handler = () => console.log('scroll event:', window.scrollY);
+    window.addEventListener('scroll', handler);
+    setTimeout(() => window.removeEventListener('scroll', handler), 5000);
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -22,6 +39,7 @@ export default function Home() {
       orientation: 'vertical',
       smoothWheel: true,
     });
+    lenis.stop();
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
@@ -39,6 +57,7 @@ export default function Home() {
       });
     });
     gsap.ticker.lagSmoothing(0);
+    lenisRef.current = lenis;
 
     return () => {
       lenis.destroy();
@@ -49,8 +68,13 @@ export default function Home() {
 
   return (
     <main>
+      {!isLoading && <Navbar />}
       <div>
         <ProductWorlds />
+      </div>
+
+      <div className="relative" style={{ backgroundColor: '#8B1A1A' }}>
+        <Sections />
       </div>
 
       <div
@@ -61,7 +85,21 @@ export default function Home() {
         }}
       />
 
-      {isLoading && <LoadingSequence onComplete={() => setIsLoading(false)} />}
+      {isLoading && <LoadingSequence onComplete={() => {
+        const lenis = lenisRef.current;
+        if (lenis) {
+          window.scrollTo(0, 0);
+          lenis.scrollTo(0, { immediate: true });
+          lenis.start();
+        }
+        console.log('scroll check - before setIsLoading:', window.scrollY);
+        setIsLoading(false);
+        console.log('scroll check - after setIsLoading:', window.scrollY);
+        requestAnimationFrame(() => {
+          console.log('scroll check - rAF:', window.scrollY);
+          ScrollTrigger.refresh();
+        });
+      }} />}
     </main>
   );
 }

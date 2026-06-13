@@ -22,7 +22,7 @@ const products = [
   },
   {
     image: '/products/puliogare.png',
-    bgColor: '#4A2810',
+    bgColor: '#650f09',
   },
 ];
 
@@ -112,6 +112,7 @@ export default function ProductWorlds() {
                 data-bbigcircle
                 className="absolute inset-0 pointer-events-none"
                 style={{
+                  opacity: 0.6,
                   transform: 'scale(2.5) translate(-15px, 40px) rotate(0deg)',
                   transformOrigin: 'center center',
                 }}

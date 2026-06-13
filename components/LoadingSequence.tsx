@@ -57,7 +57,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         ease: 'power2.out',
       }, '-=0.3');
 
-      const finalX = 'calc(47% + 20px)';
+      const finalX = 'calc(47% + 23px)';
       const finalY = '43%';
       tl.call(() => {
         gsap.set(wipeRef.current, {
@@ -81,7 +81,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
   }, [imagesLoaded, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[100] overflow-hidden">
+    <div className="fixed inset-0 z-[100] overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
       <div ref={grainRef} className="absolute inset-0">
         <Image
           src="/assets/grainbg.png"

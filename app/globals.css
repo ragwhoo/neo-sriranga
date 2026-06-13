@@ -42,6 +42,12 @@
 
 html {
   scroll-behavior: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -49,17 +55,4 @@ body {
   background-color: #8B1A1A;
   color: #f5f0e8;
   overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(245, 240, 232, 0.3);
-  border-radius: 3px;
 }
