@@ -12,19 +12,13 @@ import Sections from '@/components/Sections';
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef<Lenis | null>(null);
+  const loadingRef = useRef(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
     }
-  }, []);
-
-  useEffect(() => {
-    const handler = () => console.log('scroll event:', window.scrollY);
-    window.addEventListener('scroll', handler);
-    setTimeout(() => window.removeEventListener('scroll', handler), 5000);
-    return () => window.removeEventListener('scroll', handler);
   }, []);
 
   useEffect(() => {
@@ -39,11 +33,13 @@ export default function Home() {
       orientation: 'vertical',
       smoothWheel: true,
     });
-    lenis.stop();
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
-      ScrollTrigger.update();
+
+      if (!loadingRef.current) {
+        ScrollTrigger.update();
+      }
 
       const target = lenis.isScrolling ? 4 : 1;
       speedMult += (target - speedMult) * 0.08;
@@ -90,15 +86,9 @@ export default function Home() {
         if (lenis) {
           window.scrollTo(0, 0);
           lenis.scrollTo(0, { immediate: true });
-          lenis.start();
         }
-        console.log('scroll check - before setIsLoading:', window.scrollY);
+        loadingRef.current = false;
         setIsLoading(false);
-        console.log('scroll check - after setIsLoading:', window.scrollY);
-        requestAnimationFrame(() => {
-          console.log('scroll check - rAF:', window.scrollY);
-          ScrollTrigger.refresh();
-        });
       }} />}
     </main>
   );
