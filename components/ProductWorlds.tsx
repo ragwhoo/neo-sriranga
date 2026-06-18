@@ -34,7 +34,6 @@ function hexToRgb(hex: string) {
 export default function ProductWorlds() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const clipsRef = useRef<HTMLDivElement[]>([]);
-  const fgRefs = useRef<HTMLDivElement[]>([]);
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -62,8 +61,6 @@ export default function ProductWorlds() {
             const clamped = Math.min(1, Math.max(0, local));
             const clip = clips[i];
             if (clip) clip.style.clipPath = `inset(0 0 ${clamped * 100}% 0)`;
-            const fg = fgRefs.current[i];
-            if (fg) fg.style.opacity = `${1 - clamped}`;
           });
 
           const segProgress = p * colorSegments;
@@ -103,66 +100,57 @@ export default function ProductWorlds() {
           return (
             <div
               key={product.image}
+              ref={(el) => { if (el) clipsRef.current[originalIndex] = el; }}
               className="absolute inset-0"
+              style={{
+                clipPath: originalIndex < products.length - 1
+                  ? 'inset(0 0 0% 0)'
+                  : undefined,
+              }}
             >
               <div
-                ref={(el) => { if (el) clipsRef.current[originalIndex] = el; }}
-                className="absolute inset-0"
+                data-bbigcircle
+                className="absolute inset-0 pointer-events-none"
                 style={{
-                  clipPath: originalIndex < products.length - 1
-                    ? 'inset(0 0 0% 0)'
-                    : undefined,
+                  opacity: 0.6,
+                  transform: 'scale(2.5) translate(-15px, 40px) rotate(0deg)',
+                  transformOrigin: 'center center',
                 }}
               >
-                <div
-                  data-bbigcircle
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    opacity: 0.6,
-                    transform: 'scale(2.5) translate(-15px, 40px) rotate(0deg)',
-                    transformOrigin: 'center center',
-                  }}
-                >
-                  <Image
-                    src="/assets/bbigcircle.png"
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              <div
-                ref={(el) => { if (el) fgRefs.current[originalIndex] = el; }}
-                className="absolute inset-0"
-              >
                 <Image
-                  src={product.image}
+                  src="/assets/bbigcircle.png"
                   alt=""
                   fill
                   className="object-cover"
-                  priority={originalIndex === 0}
-                  sizes="100vw"
                 />
+              </div>
 
-                <div className="absolute inset-x-0 z-[2]" style={{ top: '-8%', bottom: 0, transform: 'translate(-20px, -28px) scale(0.3)', transformOrigin: 'center center' }}>
-                  <Image
-                    src="/assets/circlebehindgrandpa.png"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="absolute inset-0 z-[3]" style={{ transform: 'translate(-20px, -48px) scale(0.34)', transformOrigin: 'center center' }}>
-                  <Image
-                    src="/assets/loadinggrandfather.png"
-                    alt="Sriranga Organics"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
+              <Image
+                src={product.image}
+                alt=""
+                fill
+                className="object-cover"
+                priority={originalIndex === 0}
+                sizes="100vw"
+              />
+
+              <div className="absolute inset-x-0 z-[2]" style={{ top: '-8%', bottom: 0, transform: 'translate(-20px, -28px) scale(0.3)', transformOrigin: 'center center' }}>
+                <Image
+                  src="/assets/circlebehindgrandpa.png"
+                  alt=""
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="absolute inset-0 z-[3]" style={{ transform: 'translate(-20px, -48px) scale(0.34)', transformOrigin: 'center center' }}>
+                <Image
+                  src="/assets/loadinggrandfather.png"
+                  alt="Sriranga Organics"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           );
