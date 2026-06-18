@@ -41,7 +41,7 @@ export default function Sections() {
 
   return (
     <>
-      <section id="our-roots" className="relative flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
+      <section id="our-roots" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
         <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-4">Our Roots</motion.p>
         <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-6">Rooted in Tradition. Crafted for Today.</motion.h2>
         <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 max-w-2xl">At Sriranga Organics, every product begins with a simple belief: good food should come from honest ingredients. Inspired by traditional recipes and time-tested methods, we create products that celebrate the richness of natural farming and authentic Indian flavors.</motion.p>
@@ -51,16 +51,16 @@ export default function Sections() {
         <div className="absolute inset-0">
           <Image src="/photo-bw.png" alt="" fill className="object-cover" priority />
         </div>
-        <div ref={photoClipRef} className="absolute inset-0" style={{ clipPath: 'circle(40px at 50% 50%)' }}>
+        <div ref={photoClipRef} className="absolute inset-0" style={{ clipPath: 'circle(40px at 50% 50%)', zIndex: 1 }}>
           <Image src="/phot.png" alt="" fill className="object-cover" />
         </div>
         {!photoRevealed && (
-          <div className="absolute z-10 flex flex-col items-center gap-3 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <div className="w-16 h-16 rounded-full border-[3px] border-white shadow-[0_0_20px_rgba(255,255,255,0.3)] animate-pulse" />
-            <span className="text-white/80 text-xs tracking-[0.3em] uppercase font-semibold">Click to reveal</span>
+          <div className="absolute z-20 flex flex-col items-center gap-4 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div className="w-20 h-20 rounded-full border-[4px] border-white shadow-[0_0_30px_rgba(0,0,0,0.6),0_0_0_4px_rgba(0,0,0,0.2)] animate-pulse" />
+            <span className="text-white text-xs tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Click to reveal</span>
           </div>
         )}
-        <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[24vw] md:text-[18rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
+        <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
           FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
         </h1>
       </div>
