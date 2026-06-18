@@ -55,10 +55,13 @@ export default function Sections() {
           <Image src="/phot.png" alt="" fill className="object-cover" />
         </div>
         {!photoRevealed && (
-          <div className="absolute z-20 flex flex-col items-center gap-4 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <div className="w-20 h-20 rounded-full border-[4px] border-white shadow-[0_0_30px_rgba(0,0,0,0.6),0_0_0_4px_rgba(0,0,0,0.2)] animate-pulse" />
-            <span className="text-white text-xs tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Click to reveal</span>
-          </div>
+          <>
+            <div className="absolute inset-0 bg-black/20 z-[5] pointer-events-none" />
+            <div className="absolute z-20 flex flex-col items-center gap-4 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+              <div className="w-20 h-20 rounded-full border-[4px] border-white shadow-[0_0_30px_rgba(0,0,0,0.8),inset_0_0_30px_rgba(255,255,255,0.1)] animate-pulse" />
+              <span className="text-white text-xs tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">Click to reveal</span>
+            </div>
+          </>
         )}
         <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
           FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
