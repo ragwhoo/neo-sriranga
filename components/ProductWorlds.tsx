@@ -108,9 +108,18 @@ export default function ProductWorlds() {
                   : undefined,
               }}
             >
+              <Image
+                src={product.image}
+                alt=""
+                fill
+                className="object-cover relative z-[2]"
+                priority={originalIndex === 0}
+                sizes="100vw"
+              />
+
               <div
                 data-bbigcircle
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0 pointer-events-none z-[1]"
                 style={{
                   opacity: 0.6,
                   transform: 'scale(2.5) translate(-15px, 40px) rotate(0deg)',
@@ -124,15 +133,6 @@ export default function ProductWorlds() {
                   className="object-cover"
                 />
               </div>
-
-              <Image
-                src={product.image}
-                alt=""
-                fill
-                className="object-cover"
-                priority={originalIndex === 0}
-                sizes="100vw"
-              />
 
               <div className="absolute inset-x-0" style={{ top: '-8%', bottom: 0, transform: 'translate(-20px, -28px) scale(0.3)', transformOrigin: 'center center' }}>
                 <Image

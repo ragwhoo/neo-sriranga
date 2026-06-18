@@ -84,7 +84,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
     <div className="fixed inset-0 z-[100] overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
       <div ref={grainRef} className="absolute inset-0">
         <Image
-          src="/assets/grainbg.png"
+          src="/grain.png"
           alt=""
           fill
           className="object-cover"
