@@ -98,21 +98,22 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  return isLoading ? (
-    <LoadingSequence onComplete={handleLoadComplete} />
-  ) : (
-    <main>
-      <Navbar />
-      <div ref={vignetteRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: 50, background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%)' }} />
-      <div id="product-worlds">
-        <ProductWorlds />
-      </div>
-      <div className="relative" style={{ backgroundColor: '#fef3ea' }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/flowerrrr.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }} />
-        <div className="relative z-10">
-          <Sections />
+  return (
+    <>
+      <main>
+        <Navbar />
+        <div ref={vignetteRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: 50, background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%)' }} />
+        <div id="product-worlds">
+          <ProductWorlds />
         </div>
-      </div>
-    </main>
+        <div className="relative" style={{ backgroundColor: '#fef3ea' }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/flowerrrr.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }} />
+          <div className="relative z-10">
+            <Sections />
+          </div>
+        </div>
+      </main>
+      {isLoading && <LoadingSequence onComplete={handleLoadComplete} />}
+    </>
   );
 }
