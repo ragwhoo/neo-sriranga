@@ -39,6 +39,27 @@ export default function Sections() {
     tlRef.current?.play();
   };
 
+  useEffect(() => {
+    const el = document.getElementById('photo-section');
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && photoRevealed) {
+          setPhotoRevealed(false);
+          gsap.set(photoClipRef.current, { clipPath: 'circle(40px at 50% 50%)' });
+          if (flavourRef.current) {
+            gsap.set(flavourRef.current, { x: '100%' });
+            gsap.killTweensOf(flavourRef.current);
+          }
+          tlRef.current?.seek(0).pause();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [photoRevealed]);
+
   return (
     <>
       <section id="our-roots" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
