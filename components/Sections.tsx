@@ -47,7 +47,7 @@ export default function Sections() {
         <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 max-w-2xl">At Sriranga Organics, every product begins with a simple belief: good food should come from honest ingredients. Inspired by traditional recipes and time-tested methods, we create products that celebrate the richness of natural farming and authentic Indian flavors.</motion.p>
       </section>
 
-      <div id="photo-section" className="relative h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
+      <div id="photo-section" className="relative h-screen flex items-center justify-center overflow-hidden cursor-pointer" style={{ backgroundColor: '#8B1A1A' }} onClick={handleReveal}>
         <div className="absolute inset-0">
           <Image src="/photo-bw.png" alt="" fill className="object-cover" priority />
         </div>
@@ -55,11 +55,8 @@ export default function Sections() {
           <Image src="/phot.png" alt="" fill className="object-cover" />
         </div>
         {!photoRevealed && (
-          <div className="absolute z-20 flex flex-col items-center gap-4 cursor-pointer" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} onClick={handleReveal}>
-            <div className="w-24 h-24 rounded-full flex items-center justify-center animate-pulse" style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '3px solid white', boxShadow: '0 0 40px rgba(0,0,0,0.5), 0 0 0 8px rgba(0,0,0,0.15)' }}>
-              <span className="text-white text-[10px] tracking-[0.3em] uppercase font-bold">Click</span>
-            </div>
-            <span className="text-white text-xs tracking-[0.3em] uppercase font-bold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">to reveal</span>
+          <div className="absolute z-10 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <div className="w-12 h-12 bg-red-600 hover:scale-110 transition-transform animate-pulse" />
           </div>
         )}
         <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
