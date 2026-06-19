@@ -30,7 +30,7 @@ export default function Sections() {
     tlRef.current = gsap.timeline({ paused: true });
     tlRef.current
       .to(photoClipRef.current, { clipPath: 'circle(100% at 50% 50%)', duration: 0.6, ease: 'power3.out' })
-      .fromTo(flavourRef.current, { x: '0%', opacity: 0 }, { x: '-50%', opacity: 1, duration: 6, ease: 'power2.out', repeat: -1 }, '-=0.3');
+      .fromTo(flavourRef.current, { x: '0%', opacity: 0 }, { x: '-50%', opacity: 1, duration: 8, ease: 'none', repeat: -1 }, '-=0.3');
   }, []);
 
   const handleReveal = () => {
@@ -81,11 +81,11 @@ export default function Sections() {
           </div>
         )}
         <div ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 flex whitespace-nowrap pointer-events-none opacity-0">
-          <h1 className="text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none">
-            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!&nbsp;&nbsp;
+          <h1 className="text-[32vw] md:text-[22rem] font-bold text-white leading-none select-none tracking-tight">
+            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
           </h1>
-          <h1 className="text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none">
-            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!&nbsp;&nbsp;
+          <h1 className="text-[32vw] md:text-[22rem] font-bold text-white leading-none select-none tracking-tight">
+            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
           </h1>
         </div>
       </div>
