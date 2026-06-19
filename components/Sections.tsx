@@ -56,7 +56,7 @@ export default function Sections() {
         </div>
         {!photoRevealed && (
           <div className="absolute z-10 pointer-events-none" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <div className="w-12 h-12 bg-red-600 hover:scale-110 transition-transform animate-pulse" />
+            <div className="w-12 h-12 bg-red-600 hover:scale-125 transition-transform duration-300" />
           </div>
         )}
         <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
