@@ -58,6 +58,12 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         ease: 'power2.out',
       }, '-=0.3');
 
+      tl.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      }, '<');
+
       const finalX = 'calc(47% + 23px)';
       const finalY = '43%';
       tl.call(() => {
@@ -76,12 +82,6 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         duration: 0.3,
         ease: 'power2.inOut',
       });
-
-      tl.to(containerRef.current, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.inOut',
-      }, '-=0.1');
     }, remaining);
 
     return () => clearTimeout(timer);
