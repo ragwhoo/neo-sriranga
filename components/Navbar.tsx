@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import FlowingMenu from './FlowingMenu';
 
 const menuItems = [
@@ -53,11 +54,20 @@ export default function Navbar() {
         <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '0px' : '24px', backgroundColor: c, opacity: isOpen ? 0 : 1 }} />
         <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: c, transform: isOpen ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
       </button>
-      {isOpen && (
-        <div className="fixed inset-0 z-[60]" style={{ backgroundColor: '#fef3ea' }}>
-          <FlowingMenu items={menuItems} onLinkClick={() => setIsOpen(false)} />
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60]"
+            style={{ backgroundColor: '#fef3ea' }}
+            initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <FlowingMenu items={menuItems} onLinkClick={() => setIsOpen(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
