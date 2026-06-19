@@ -22,7 +22,7 @@ const products = [
 
 export default function Sections() {
   const photoClipRef = useRef<HTMLDivElement>(null);
-  const flavourRef = useRef<HTMLHeadingElement>(null);
+  const flavourRef = useRef<HTMLDivElement>(null);
   const [photoRevealed, setPhotoRevealed] = useState(false);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
 
@@ -30,7 +30,7 @@ export default function Sections() {
     tlRef.current = gsap.timeline({ paused: true });
     tlRef.current
       .to(photoClipRef.current, { clipPath: 'circle(100% at 50% 50%)', duration: 0.6, ease: 'power3.out' })
-      .fromTo(flavourRef.current, { x: '100%' }, { x: '-100%', duration: 4, ease: 'power2.out', repeat: -1 }, '-=0.3');
+      .fromTo(flavourRef.current, { x: '0%' }, { x: '-50%', duration: 6, ease: 'power2.out', repeat: -1 }, '-=0.3');
   }, []);
 
   const handleReveal = () => {
@@ -48,7 +48,7 @@ export default function Sections() {
           setPhotoRevealed(false);
           gsap.set(photoClipRef.current, { clipPath: 'circle(40px at 50% 50%)' });
           if (flavourRef.current) {
-            gsap.set(flavourRef.current, { x: '100%' });
+            gsap.set(flavourRef.current, { x: '0%' });
             gsap.killTweensOf(flavourRef.current);
           }
           tlRef.current?.seek(0).pause();
@@ -80,9 +80,14 @@ export default function Sections() {
             <div className="w-[80px] h-[80px] bg-red-600 hover:scale-110 transition-transform duration-300" />
           </div>
         )}
-        <h1 ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 whitespace-nowrap text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none pointer-events-none">
-          FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
-        </h1>
+        <div ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 flex whitespace-nowrap pointer-events-none">
+          <h1 className="text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none">
+            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!&nbsp;&nbsp;
+          </h1>
+          <h1 className="text-[32vw] md:text-[22rem] font-bold tracking-[0.05em] text-white leading-none select-none">
+            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!&nbsp;&nbsp;
+          </h1>
+        </div>
       </div>
 
       <section id="products" className="relative flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
