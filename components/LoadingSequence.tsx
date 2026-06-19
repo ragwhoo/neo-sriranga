@@ -58,7 +58,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         ease: 'power2.out',
       }, '-=0.3');
 
-      tl.to(containerRef.current, {
+      tl.to(grainRef.current, {
         opacity: 0,
         duration: 0.5,
         ease: 'power2.inOut',
@@ -76,19 +76,13 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         duration: 0.6,
         ease: 'power2.inOut',
       });
-
-      tl.to(grainRef.current, {
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.inOut',
-      });
     }, remaining);
 
     return () => clearTimeout(timer);
   }, [imagesLoaded, onComplete]);
 
   return (
-    <div ref={containerRef} className="fixed inset-0 z-[100] overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
+    <div ref={containerRef} className="fixed inset-0 z-[100] overflow-hidden">
       <div ref={grainRef} className="absolute inset-0" style={{ backgroundColor: '#8B1A1A' }}>
         <Image
           src="/grain.png"
