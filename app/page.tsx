@@ -99,15 +99,14 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  return (
-    <>
-      {isLoading && <LoadingSequence onComplete={handleLoadComplete} />}
-      {!isLoading && (
-        <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
+  return isLoading ? (
+    <LoadingSequence onComplete={handleLoadComplete} />
+  ) : (
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+    >
           <Navbar />
           <div ref={vignetteRef} className="fixed inset-0 pointer-events-none" style={{ zIndex: 50, background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%)' }} />
           <div id="product-worlds">
@@ -120,6 +119,6 @@ export default function Home() {
             </div>
           </div>
         </motion.main>
-      )}
+  );
   );
 }
