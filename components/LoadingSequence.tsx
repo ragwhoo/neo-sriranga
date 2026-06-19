@@ -9,6 +9,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
   const wipeRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const grainRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const totalImages = 3;
 
@@ -75,14 +76,20 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
         duration: 0.3,
         ease: 'power2.inOut',
       });
+
+      tl.to(containerRef.current, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.inOut',
+      }, '-=0.1');
     }, remaining);
 
     return () => clearTimeout(timer);
   }, [imagesLoaded, onComplete]);
 
   return (
-    <div className="fixed inset-0 z-[100] overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
-      <div ref={grainRef} className="absolute inset-0">
+    <div ref={containerRef} className="fixed inset-0 z-[100] overflow-hidden" style={{ backgroundColor: '#8B1A1A' }}>
+      <div ref={grainRef} className="absolute inset-0" style={{ backgroundColor: '#8B1A1A' }}>
         <Image
           src="/grain.png"
           alt=""
