@@ -30,7 +30,8 @@ export default function Sections() {
     tlRef.current = gsap.timeline({ paused: true });
     tlRef.current
       .to(photoClipRef.current, { clipPath: 'circle(100% at 50% 50%)', duration: 0.6, ease: 'power3.out' })
-      .fromTo(flavourRef.current, { x: '0%', opacity: 0 }, { x: '-50%', opacity: 1, duration: 8, ease: 'none', repeat: -1 }, '-=0.3');
+      .set(flavourRef.current, { opacity: 1 })
+      .fromTo(flavourRef.current, { x: '0%' }, { x: '-50%', duration: 8, ease: 'none', repeat: -1 }, '-=0.1');
   }, []);
 
   const handleReveal = () => {
