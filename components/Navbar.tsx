@@ -59,9 +59,9 @@ export default function Navbar() {
           <motion.div
             className="fixed inset-0 z-[60]"
             style={{ backgroundColor: '#fef3ea' }}
-            initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
-            animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
-            exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
+            initial={{ opacity: 0, clipPath: 'inset(0 0 0 100%)' }}
+            animate={{ opacity: 1, clipPath: 'inset(0 0 0 0%)' }}
+            exit={{ opacity: 0, clipPath: 'inset(0 0 0 100%)' }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
           >
             <FlowingMenu items={menuItems} onLinkClick={() => setIsOpen(false)} />
