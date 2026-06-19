@@ -120,5 +120,4 @@ export default function Home() {
           </div>
         </motion.main>
   );
-  );
 }
