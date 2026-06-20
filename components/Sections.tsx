@@ -1,10 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
 import Recipes from './Recipes';
+import Skiper16 from './Skiper16';
 
 const blurFadeIn = {
   initial: { opacity: 0, filter: 'blur(10px)' },
@@ -13,54 +11,7 @@ const blurFadeIn = {
   viewport: { once: true },
 };
 
-const products = [
-  { name: 'Sambar Mix', desc: 'A balanced blend of spices and ingredients designed to bring authentic South Indian flavor to every meal.', img: '/products/sambar.png', color: '#a80000' },
-  { name: 'Bisibelebath Mix', desc: 'A rich and comforting preparation inspired by Karnataka\'s most beloved traditional dish.', img: '/products/bisibelebath.png', color: '#fba20d' },
-  { name: 'Puliyogare Mix', desc: 'Tangy, aromatic, and deeply rooted in temple-town culinary traditions.', img: '/products/puliogare.png', color: '#650f09' },
-  { name: 'Rasam Mix', desc: 'A tangy and peppery preparation rooted in traditional South Indian cuisine.', img: '/products/rasam.png', color: '#ff5a5a' },
-];
-
 export default function Sections() {
-  const photoClipRef = useRef<HTMLDivElement>(null);
-  const flavourRef = useRef<HTMLDivElement>(null);
-  const [photoRevealed, setPhotoRevealed] = useState(false);
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-
-  useEffect(() => {
-    tlRef.current = gsap.timeline({ paused: true });
-    tlRef.current
-      .to(photoClipRef.current, { clipPath: 'circle(100% at 50% 50%)', duration: 0.6, ease: 'power3.out' })
-      .set(flavourRef.current, { opacity: 1 })
-      .fromTo(flavourRef.current, { x: '0%' }, { x: '-50%', duration: 8, ease: 'none', repeat: -1 }, '-=0.1');
-  }, []);
-
-  const handleReveal = () => {
-    if (photoRevealed) return;
-    setPhotoRevealed(true);
-    tlRef.current?.play();
-  };
-
-  useEffect(() => {
-    const el = document.getElementById('photo-section');
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting && photoRevealed) {
-          setPhotoRevealed(false);
-          gsap.set(photoClipRef.current, { clipPath: 'circle(40px at 50% 50%)' });
-          if (flavourRef.current) {
-            gsap.set(flavourRef.current, { x: '0%', opacity: 0 });
-            gsap.killTweensOf(flavourRef.current);
-          }
-          tlRef.current?.seek(0).pause();
-        }
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [photoRevealed]);
-
   return (
     <>
       <section id="our-roots" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
@@ -69,47 +20,7 @@ export default function Sections() {
         <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 max-w-2xl">At Sriranga Organics, every product begins with a simple belief: good food should come from honest ingredients. Inspired by traditional recipes and time-tested methods, we create products that celebrate the richness of natural farming and authentic Indian flavors.</motion.p>
       </section>
 
-      <div id="photo-section" className="relative h-screen flex items-center justify-center overflow-hidden cursor-pointer" style={{ backgroundColor: '#8B1A1A' }} onClick={handleReveal}>
-        <div className="absolute inset-0">
-          <Image src="/photo-bw.png" alt="" fill className="object-cover" priority />
-        </div>
-        <div ref={photoClipRef} className="absolute inset-0 z-[1]" style={{ clipPath: 'circle(40px at 50% 50%)' }}>
-          <Image src="/phot.png" alt="" fill className="object-cover" />
-        </div>
-        {!photoRevealed && (
-          <div className="absolute z-10 cursor-pointer" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} onClick={handleReveal}>
-            <div className="w-[80px] h-[80px] bg-red-600 hover:scale-110 transition-transform duration-300" />
-          </div>
-        )}
-        <div ref={flavourRef} className="absolute top-1/2 -translate-y-1/2 z-20 flex whitespace-nowrap pointer-events-none opacity-0">
-          <h1 className="text-[32vw] md:text-[22rem] font-bold text-white leading-none select-none tracking-tight">
-            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
-          </h1>
-          <h1 className="text-[32vw] md:text-[22rem] font-bold text-white leading-none select-none tracking-tight">
-            FLAAAAAAAAAVVVVVVVVVVOOOOOOOOOUUUUUUUURRRRRR!!!!!!!
-          </h1>
-        </div>
-      </div>
-
-      <section id="products" className="relative flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
-        <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-4">Featured Products</motion.p>
-        <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-4">Inspired by Tradition</motion.h2>
-        <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 max-w-2xl mb-12">A collection of carefully crafted products that celebrate the diversity of Indian ingredients and culinary heritage.</motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl w-full">
-          {products.map((p) => (
-            <motion.div key={p.name} {...blurFadeIn} className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer"
-              onMouseEnter={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(100% at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
-              onMouseLeave={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(32px at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
-            >
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                <div data-pc className="absolute inset-0" style={{ backgroundColor: p.color, clipPath: 'circle(32px at 50% 50%)' }} />
-                <Image src={p.img} alt={p.name} fill className="object-cover relative z-[1]" />
-              </div>
-              <div className="p-6"><h3 className="text-xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-1">{p.name}</h3><p className="text-sm leading-relaxed text-[#8B1A1A]/60">{p.desc}</p></div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <Skiper16 />
 
       <Recipes />
 
