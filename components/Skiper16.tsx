@@ -6,6 +6,11 @@ import Image from "next/image";
 
 const products = [
   {
+    title: "Puliyogare Mix",
+    src: "/pulipuli.png",
+    color: "#650f09",
+  },
+  {
     title: "Sambar Mix",
     src: "/samsam.png",
     color: "#a80000",
@@ -14,11 +19,6 @@ const products = [
     title: "Bisibelebath Mix",
     src: "/bisbis.png",
     color: "#fba20d",
-  },
-  {
-    title: "Puliyogare Mix",
-    src: "/pulipuli.png",
-    color: "#650f09",
   },
   {
     title: "Rasam Mix",
