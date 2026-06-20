@@ -96,7 +96,7 @@ export default function Sections() {
           </div>
         </motion.div>
         <div className="relative flex items-center justify-between px-6 py-4 sm:px-10 xl:px-20"><p className="text-xs text-white/25">&copy; Sriranga Organics</p></div>
-        <motion.div variants={{ hidden: { opacity: 0, y: 40, filter: 'blur(12px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', duration: 1.1, bounce: 0 } } }} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} className="flex justify-end overflow-hidden items-start" style={{ height: '14vw' }}>
+        <motion.div variants={{ hidden: { opacity: 0, y: 40, filter: 'blur(12px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', duration: 1.1, bounce: 0 } } }} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} className="flex justify-center overflow-hidden items-start" style={{ height: '14vw' }}>
           <h2 className="text-[30vw] sm:text-[26vw] md:text-[24rem] font-moonbase tracking-[0.02em] text-white leading-none select-none">SRIRANGA</h2>
         </motion.div>
       </footer>
