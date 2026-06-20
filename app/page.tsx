@@ -39,7 +39,7 @@ export default function Home() {
       orientation: 'vertical',
       smoothWheel: true,
     });
-    gsap.ticker.add((time) => {
+    const tickerCallback = (time: number) => {
       if (!loadingRef.current) {
         lenis.raf(time * 1000);
       }
@@ -55,11 +55,13 @@ export default function Home() {
         (el as HTMLElement).style.transform =
           `scale(2.5) translate(-15px, 40px) rotate(${bbigAngle}deg)`;
       });
-    });
+    };
+    gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
     lenisRef.current = lenis;
 
     return () => {
+      gsap.ticker.remove(tickerCallback);
       lenis.destroy();
       gsap.ticker.lagSmoothing(1);
       ScrollTrigger.getAll().forEach((st) => st.kill());
