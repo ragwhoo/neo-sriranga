@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { desktop: '/products/sambar.png', mobile: '/mobile/39.png', bgColor: '#8B1A1A' },
+  { desktop: '/products/sambar.png', mobile: '/sambarmobile.png', bgColor: '#8B1A1A' },
   { desktop: '/products/bisibelebath.png', mobile: '/mobile/40.png', bgColor: '#D4782B' },
   { desktop: '/products/rasam.png', mobile: '/mobile/41.png', bgColor: '#C0392B' },
   { desktop: '/products/puliogare.png', mobile: '/mobile/42.png', bgColor: '#650f09' },
