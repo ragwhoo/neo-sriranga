@@ -91,7 +91,7 @@ export default function RecipePage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-['Moonbase_Delta'] tracking-wider text-white leading-tight"
+              className="text-3xl md:text-5xl font-moonbase tracking-wider text-white leading-tight"
             >
               {recipe.title}
             </motion.h1>
@@ -174,7 +174,7 @@ export default function RecipePage() {
             </div>
 
             <section className="mb-10">
-              <h2 className="text-lg font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-4 flex items-center gap-3">
+              <h2 className="text-lg font-moonbase tracking-wider text-[#8B1A1A] mb-4 flex items-center gap-3">
                 <span className="w-6 h-0.5 rounded-full" style={{ backgroundColor: recipe.color }} />
                 Ingredients
               </h2>
@@ -195,7 +195,7 @@ export default function RecipePage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-4 flex items-center gap-3">
+              <h2 className="text-lg font-moonbase tracking-wider text-[#8B1A1A] mb-4 flex items-center gap-3">
                 <span className="w-6 h-0.5 rounded-full" style={{ backgroundColor: recipe.color }} />
                 Method
               </h2>

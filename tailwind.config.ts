@@ -15,8 +15,8 @@ const config: Config = {
         rasam: '#C0392B',
       },
       fontFamily: {
-        heading: ['"Moonbase Delta"', 'serif'],
-        subtitle: ['"Courier Prime"', 'Courier New', 'monospace'],
+        moonbase: ['var(--font-moonbase)', 'serif'],
+        courier: ['var(--font-courier)', 'monospace'],
       },
     },
   },

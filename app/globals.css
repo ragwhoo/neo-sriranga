@@ -2,26 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-@font-face {
-  font-family: 'Moonbase Delta';
-  src: url('/fonts/Moonbase Delta.otf') format('opentype'),
-       url('/fonts/Moonbase Delta.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Moonbase Delta';
-  src: url('/fonts/Moonbase Delta Italic.otf') format('opentype'),
-       url('/fonts/Moonbase Delta Italic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
 @keyframes spin-slow {
   from { transform: scale(2.5) translate(-15px, 40px) rotate(0deg); }
   to { transform: scale(2.5) translate(-15px, 40px) rotate(360deg); }
@@ -34,24 +14,17 @@
   --color-rasam: #C0392B;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   scroll-behavior: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-html::-webkit-scrollbar {
-  display: none;
-}
+html::-webkit-scrollbar { display: none; }
 
 body {
-  font-family: 'Courier Prime', monospace;
+  font-family: var(--font-courier), monospace;
   background-color: #8B1A1A;
   color: #f5f0e8;
   overflow-x: hidden;
