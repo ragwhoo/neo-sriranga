@@ -54,7 +54,7 @@ const StickyCard = ({
           scale,
           top: `calc(-5vh + ${i * 20 + 80}px)`,
         }}
-        className="relative -top-1/4 flex flex-col overflow-hidden w-[95vw] max-w-[1200px] aspect-[16/9] origin-top rounded-3xl"
+        className="relative -top-1/4 flex flex-col overflow-hidden w-[95vw] max-w-[1200px] aspect-[4/3] md:aspect-[16/9] origin-top rounded-3xl"
         key={title}
       >
         <Image src={src} alt={title} fill className="object-cover rounded-3xl" />
@@ -71,7 +71,7 @@ export default function Skiper16() {
   });
 
   return (
-    <section ref={container} className="relative w-full pt-8 pb-24" style={{ backgroundColor: "#fef3ea" }}>
+    <section ref={container} className="relative w-full px-4 pt-8 pb-24" style={{ backgroundColor: "#fef3ea" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/flowerrrr.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }} />
       {products.map((product, i) => {
         const targetScale = Math.max(0.5, 1 - (products.length - i - 1) * 0.1);

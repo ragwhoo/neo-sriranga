@@ -43,7 +43,7 @@ export default function RecipesPage() {
             backgroundSize: 'auto',
           }}
         />
-        <div className="relative z-10 pt-20">
+        <div className="relative z-10 pt-16">
           <Recipes />
         </div>
       </div>

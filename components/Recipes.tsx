@@ -36,7 +36,7 @@ export default function Recipes() {
     <section id="recipes" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center overflow-hidden">
       <div className="relative z-10 w-full max-w-6xl">
         <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-2">From Our Kitchen</motion.p>
-        <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] leading-tight mb-4">
+        <motion.h2 {...blurFadeIn} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] leading-tight mb-4">
           Recipes
         </motion.h2>
         <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 mx-auto max-w-2xl mb-12">
@@ -56,7 +56,7 @@ export default function Recipes() {
                 variants={cardVariants}
                 whileHover={{ y: -6, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`group relative flex min-h-[360px] w-full flex-col justify-between rounded-[2rem] p-6 sm:p-7 cursor-pointer transition-colors duration-300 ${colorVariants[i % colorVariants.length]}`}
+                className={`group relative flex min-h-[280px] sm:min-h-[340px] lg:min-h-[360px] w-full flex-col justify-between rounded-[2rem] p-5 sm:p-7 cursor-pointer transition-colors duration-300 ${colorVariants[i % colorVariants.length]}`}
               >
                 <div className="flex flex-1 flex-col">
                   <div className="flex items-center justify-between">

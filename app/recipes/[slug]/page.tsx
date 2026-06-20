@@ -57,6 +57,7 @@ export default function RecipePage() {
     <main className="min-h-screen" style={{ backgroundColor: '#fef3ea' }}>
       <Navbar />
       <motion.div
+        className="pt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -97,6 +98,23 @@ export default function RecipePage() {
             </motion.h1>
           </div>
         </div>
+      </div>
+
+      <div className="lg:hidden max-w-6xl mx-auto px-6 pt-6 pb-2 overflow-x-auto flex gap-2">
+        {recipes.map((r) => (
+          <Link key={r.id} href={`/recipes/${r.slug}`}>
+            <span
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors"
+              style={{
+                backgroundColor: r.id === recipe.id ? r.color : r.color + '15',
+                color: r.id === recipe.id ? '#fff' : r.color,
+              }}
+            >
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: r.color }} />
+              {r.title.length > 20 ? r.title.slice(0, 20) + '...' : r.title}
+            </span>
+          </Link>
+        ))}
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-10">
@@ -149,7 +167,7 @@ export default function RecipePage() {
               </div>
             </div>
 
-            <div className="flex gap-3 mb-10">
+            <div className="flex flex-wrap gap-3 mb-10">
               <a
                 href={`https://wa.me/?text=${encodeURIComponent(`*${recipe.title}* - ${recipe.product}\n\n${recipe.description}\n\nIngredients: ${recipe.ingredients.join(', ')}\n\nMethod: ${recipe.method.join(' → ')}`)}`}
                 target="_blank"
