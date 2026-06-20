@@ -64,13 +64,21 @@ export default function RecipePage() {
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: '#fef3ea' }}>
-      <Link
-        href="/"
-        className="fixed top-4 left-6 z-[70] inline-flex items-center gap-2 text-sm text-[#8B1A1A]/60 hover:text-[#8B1A1A] transition-colors"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        Home
-      </Link>
+      <div className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-6 md:px-10 py-4">
+        <Link href="/">
+          <div className="w-28 h-14" style={{
+            backgroundColor: '#8B1A1A',
+            maskImage: 'url(/srirangalogo.png)',
+            maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center',
+            WebkitMaskImage: 'url(/srirangalogo.png)',
+            WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center',
+          }} />
+        </Link>
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#8B1A1A]/60 hover:text-[#8B1A1A] transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          Home
+        </Link>
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
