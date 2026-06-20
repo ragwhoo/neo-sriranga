@@ -39,7 +39,7 @@ export default function Recipes() {
         <motion.h2 {...blurFadeIn} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] leading-tight mb-4">
           Recipes
         </motion.h2>
-        <motion.p {...blurFadeIn} className="text-base md:text-lg leading-relaxed text-[#8B1A1A]/70 mx-auto max-w-2xl mb-12">
+        <motion.p {...blurFadeIn} className="text-lg md:text-xl leading-relaxed text-[#8B1A1A]/70 mx-auto max-w-2xl mb-12">
           Simple, flavorful ways to bring Sriranga Organics spice blends into your everyday cooking.
         </motion.p>
 
