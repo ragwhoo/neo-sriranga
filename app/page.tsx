@@ -10,13 +10,7 @@ import ProductWorlds from '@/components/ProductWorlds';
 import Sections from '@/components/Sections';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('sriranga_loaded')) {
-      return false;
-    }
-    document.body.style.overflow = 'hidden';
-    return true;
-  });
+  const [isLoading, setIsLoading] = useState(true);
   const lenisRef = useRef<Lenis | null>(null);
   const loadingRef = useRef(true);
   const vignetteRef = useRef<HTMLDivElement>(null);
@@ -100,7 +94,6 @@ export default function Home() {
       lenis.scrollTo(0, { immediate: true });
     }
     document.body.style.overflow = '';
-    sessionStorage.setItem('sriranga_loaded', '1');
     loadingRef.current = false;
     setIsLoading(false);
   };
