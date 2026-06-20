@@ -37,12 +37,13 @@ export default function Navbar() {
   }, []);
 
   const c = onDarkBg ? '#ffffff' : '#8B1A1A';
+  const hamburgerColor = isOpen ? '#8B1A1A' : c;
 
   return (
     <nav className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-8 py-4">
       <Link href="/" className="relative z-[70]">
         <div className="w-20 h-10" style={{
-          backgroundColor: c,
+          backgroundColor: hamburgerColor,
           maskImage: 'url(/srirangalogo.png)',
           maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center',
           WebkitMaskImage: 'url(/srirangalogo.png)',
@@ -50,9 +51,9 @@ export default function Navbar() {
         }} />
       </Link>
       <button onClick={() => setIsOpen(!isOpen)} className="relative z-[70] flex flex-col items-end gap-[6px] cursor-pointer" aria-label={isOpen ? 'Close' : 'Open'}>
-        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: c, transform: isOpen ? 'rotate(45deg) translate(5px,6px)' : 'none' }} />
-        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '0px' : '24px', backgroundColor: c, opacity: isOpen ? 0 : 1 }} />
-        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: c, transform: isOpen ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
+        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: hamburgerColor, transform: isOpen ? 'rotate(45deg) translate(5px,6px)' : 'none' }} />
+        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '0px' : '24px', backgroundColor: hamburgerColor, opacity: isOpen ? 0 : 1 }} />
+        <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: hamburgerColor, transform: isOpen ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
       </button>
       <AnimatePresence>
         {isOpen && (
