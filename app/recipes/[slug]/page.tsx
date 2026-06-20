@@ -5,13 +5,28 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Clock, Flame, Users, ArrowLeft } from 'lucide-react';
 import { recipes } from '@/lib/recipes';
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import Lenis from 'lenis';
 
 export default function RecipePage() {
   const { slug } = useParams();
   const recipe = recipes.find((r) => r.slug === slug);
   const [baseColor, setBaseColor] = useState(recipe?.color || '#fef3ea');
+  const [onDarkBg, setOnDarkBg] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const cb = document.querySelector('[data-color-banner]');
+      if (cb) {
+        const r = cb.getBoundingClientRect();
+        setOnDarkBg(r.top <= 80 && r.bottom >= 0);
+      } else {
+        setOnDarkBg(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useLayoutEffect(() => {
     document.documentElement.style.transform = '';
@@ -67,14 +82,14 @@ export default function RecipePage() {
       <div className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-6 md:px-10 py-4">
         <Link href="/">
           <div className="w-28 h-14" style={{
-            backgroundColor: '#8B1A1A',
+            backgroundColor: onDarkBg ? '#ffffff' : '#8B1A1A',
             maskImage: 'url(/srirangalogo.png)',
             maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center',
             WebkitMaskImage: 'url(/srirangalogo.png)',
             WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center',
           }} />
         </Link>
-        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-[#8B1A1A]/60 hover:text-[#8B1A1A] transition-colors">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm transition-colors" style={{ color: onDarkBg ? 'rgba(255,255,255,0.6)' : 'rgba(139,26,26,0.6)' }}>
           <ArrowLeft className="w-4 h-4" />
           Home
         </Link>
