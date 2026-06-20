@@ -147,11 +147,11 @@ export default function RecipePage() {
         <div className="flex-1 min-w-0">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
             <Link
-              href="/#recipes"
+              href="/"
               className="inline-flex items-center gap-2 text-sm text-[#8B1A1A]/50 hover:text-[#8B1A1A] transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Recipes
+              Back to Home
             </Link>
 
             <p className="text-base leading-relaxed text-[#8B1A1A]/70 mb-8">{recipe.description}</p>
@@ -244,11 +244,11 @@ export default function RecipePage() {
 
             <div className="mt-16 pt-8 border-t border-[#8B1A1A]/10 text-center">
               <Link
-                href="/#recipes"
+                href="/"
                 className="inline-flex items-center gap-2 text-sm text-[#8B1A1A]/50 hover:text-[#8B1A1A] transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back to all Recipes
+                Back to Home
               </Link>
             </div>
           </motion.div>
