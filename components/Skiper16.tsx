@@ -1,35 +1,22 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 
-const products = [
-  {
-    title: "43",
-    src: "/photos/43.png",
-    color: "#a80000",
-  },
-  {
-    title: "44",
-    src: "/photos/44.png",
-    color: "#fba20d",
-  },
-  {
-    title: "45",
-    src: "/photos/45.png",
-    color: "#650f09",
-  },
-  {
-    title: "46",
-    src: "/photos/46.png",
-    color: "#ff5a5a",
-  },
-  {
-    title: "47",
-    src: "/photos/47.png",
-    color: "#2d1b4e",
-  },
+const desktopImages = [
+  { title: "43", src: "/photos/43.png", color: "#a80000" },
+  { title: "44", src: "/photos/44.png", color: "#fba20d" },
+  { title: "45", src: "/photos/45.png", color: "#650f09" },
+  { title: "46", src: "/photos/46.png", color: "#ff5a5a" },
+  { title: "47", src: "/photos/47.png", color: "#2d1b4e" },
+];
+
+const mobileImages = [
+  { title: "39", src: "/mobile/39.png", color: "#a80000" },
+  { title: "40", src: "/mobile/40.png", color: "#fba20d" },
+  { title: "41", src: "/mobile/41.png", color: "#650f09" },
+  { title: "42", src: "/mobile/42.png", color: "#ff5a5a" },
 ];
 
 const StickyCard = ({
@@ -70,6 +57,11 @@ const StickyCard = ({
 
 export default function Skiper16() {
   const container = useRef<HTMLDivElement>(null);
+  const [products, setProducts] = useState(desktopImages);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setProducts(mobileImages);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
