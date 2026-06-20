@@ -36,15 +36,13 @@ export default function Sections() {
             { name: 'Rasam Mix', desc: 'A tangy and peppery preparation rooted in traditional South Indian cuisine.', img: '/products/rasam.png', color: '#ff5a5a' },
           ].map((p) => (
             <motion.div key={p.name} {...blurFadeIn} className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer"
-              whileHover={{ y: -10 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
               onMouseEnter={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(100% at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
               onMouseLeave={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(32px at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
             >
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <motion.div className="relative w-full aspect-[4/3] overflow-hidden" whileHover={{ scale: 1.1 }} transition={{ duration: 0.5, ease: 'easeOut' }}>
                 <div data-pc className="absolute inset-0" style={{ backgroundColor: p.color, clipPath: 'circle(32px at 50% 50%)' }} />
                 <Image src={p.img} alt={p.name} fill className="object-cover relative z-[1]" />
-              </div>
+              </motion.div>
               <div className="p-6"><h3 className="text-xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-1">{p.name}</h3><p className="text-sm leading-relaxed text-[#8B1A1A]/60">{p.desc}</p></div>
             </motion.div>
           ))}
