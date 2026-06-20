@@ -53,10 +53,10 @@ const StickyCard = ({
           scale,
           top: `calc(-5vh + ${i * 20 + 250}px)`,
         }}
-        className="relative -top-1/4 flex flex-col overflow-hidden w-[90vw] max-w-[600px] aspect-[4/3] origin-top"
+        className="relative -top-1/4 flex flex-col overflow-hidden w-[90vw] max-w-[600px] aspect-[4/3] origin-top rounded-3xl"
         key={title}
       >
-        <img src={src} alt={title} className="h-full w-full object-cover" />
+        <img src={src} alt={title} className="h-full w-full object-cover rounded-3xl" />
       </motion.div>
     </div>
   );
@@ -70,13 +70,7 @@ export default function Skiper16() {
   });
 
   return (
-    <section ref={container} className="relative w-full pb-[50vh]" style={{ backgroundColor: "#fef3ea" }}>
-      <div className="flex flex-col items-center justify-center pt-[20vh] gap-4 text-center">
-        <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40">Our Products</p>
-        <h2 className="text-6xl md:text-7xl lg:text-8xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-8">
-          Inspired by Tradition
-        </h2>
-      </div>
+    <section ref={container} className="relative w-full pt-[20vh] pb-[50vh]" style={{ backgroundColor: "#fef3ea" }}>
       {products.map((product, i) => {
         const targetScale = Math.max(0.5, 1 - (products.length - i - 1) * 0.1);
         return (
