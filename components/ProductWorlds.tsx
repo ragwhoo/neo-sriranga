@@ -127,7 +127,7 @@ export default function ProductWorlds() {
 
               <Image
                 src={product.image}
-                alt=""
+                alt={`${product.image.replace('/products/', '').replace('.png', '')} product`}
                 fill
                 className="object-cover"
                 priority={originalIndex === 0}

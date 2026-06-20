@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Clock, Flame, Users, ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { recipes } from '@/lib/recipes';
-import { useEffect, useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import Lenis from 'lenis';
 
 export default function RecipePage() {
@@ -31,8 +31,11 @@ export default function RecipePage() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
+    const rafId = requestAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
   }, []);
 
   useLayoutEffect(() => {

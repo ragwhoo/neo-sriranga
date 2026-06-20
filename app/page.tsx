@@ -32,6 +32,7 @@ export default function Home() {
 
     let bbigAngle = 0;
     let speedMult = 1;
+    let bbigCircles: HTMLElement[] = [];
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -51,10 +52,10 @@ export default function Home() {
       speedMult += (target - speedMult) * 0.08;
       bbigAngle += 0.12 * speedMult;
       bbigAngle %= 360;
-      document.querySelectorAll('[data-bbigcircle]').forEach((el) => {
-        (el as HTMLElement).style.transform =
+      for (let i = 0; i < bbigCircles.length; i++) {
+        bbigCircles[i].style.transform =
           `scale(2.5) translate(-15px, 40px) rotate(${bbigAngle}deg)`;
-      });
+      }
     });
     gsap.ticker.lagSmoothing(0);
     lenisRef.current = lenis;
@@ -96,6 +97,8 @@ export default function Home() {
     document.body.style.overflow = '';
     loadingRef.current = false;
     setIsLoading(false);
+
+    bbigCircles = Array.from(document.querySelectorAll<HTMLElement>('[data-bbigcircle]'));
 
     if (window.location.hash) {
       setTimeout(() => {
