@@ -6,24 +6,29 @@ import Image from "next/image";
 
 const products = [
   {
-    title: "Puliyogare Mix",
-    src: "/pulipuli.png",
-    color: "#650f09",
-  },
-  {
-    title: "Sambar Mix",
-    src: "/samsam.png",
+    title: "43",
+    src: "/photos/43.png",
     color: "#a80000",
   },
   {
-    title: "Bisibelebath Mix",
-    src: "/bisbis.png",
+    title: "44",
+    src: "/photos/44.png",
     color: "#fba20d",
   },
   {
-    title: "Rasam Mix",
-    src: "/rasras.png",
+    title: "45",
+    src: "/photos/45.png",
+    color: "#650f09",
+  },
+  {
+    title: "46",
+    src: "/photos/46.png",
     color: "#ff5a5a",
+  },
+  {
+    title: "47",
+    src: "/photos/47.png",
+    color: "#2d1b4e",
   },
 ];
 
