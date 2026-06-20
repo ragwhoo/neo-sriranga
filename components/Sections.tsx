@@ -39,7 +39,7 @@ export default function Sections() {
               onMouseEnter={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(100% at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
               onMouseLeave={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(32px at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
             >
-              <motion.div className="relative w-full aspect-[4/3] overflow-hidden" whileHover={{ scale: 1.1 }} transition={{ duration: 0.5, ease: 'easeOut' }}>
+              <motion.div className="relative w-full aspect-[4/3] overflow-hidden" whileHover={{ y: -12 }} transition={{ duration: 0.5, ease: 'easeOut' }}>
                 <div data-pc className="absolute inset-0" style={{ backgroundColor: p.color, clipPath: 'circle(32px at 50% 50%)' }} />
                 <Image src={p.img} alt={p.name} fill className="object-cover relative z-[1]" />
               </motion.div>
