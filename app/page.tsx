@@ -14,6 +14,7 @@ export default function Home() {
   const lenisRef = useRef<Lenis | null>(null);
   const loadingRef = useRef(true);
   const vignetteRef = useRef<HTMLDivElement>(null);
+  const bbigCirclesRef = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -32,7 +33,6 @@ export default function Home() {
 
     let bbigAngle = 0;
     let speedMult = 1;
-    let bbigCircles: HTMLElement[] = [];
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -52,8 +52,9 @@ export default function Home() {
       speedMult += (target - speedMult) * 0.08;
       bbigAngle += 0.12 * speedMult;
       bbigAngle %= 360;
-      for (let i = 0; i < bbigCircles.length; i++) {
-        bbigCircles[i].style.transform =
+      const circles = bbigCirclesRef.current;
+      for (let i = 0; i < circles.length; i++) {
+        circles[i].style.transform =
           `scale(2.5) translate(-15px, 40px) rotate(${bbigAngle}deg)`;
       }
     });
@@ -98,7 +99,7 @@ export default function Home() {
     loadingRef.current = false;
     setIsLoading(false);
 
-    bbigCircles = Array.from(document.querySelectorAll<HTMLElement>('[data-bbigcircle]'));
+    bbigCirclesRef.current = Array.from(document.querySelectorAll<HTMLElement>('[data-bbigcircle]'));
 
     if (window.location.hash) {
       setTimeout(() => {
