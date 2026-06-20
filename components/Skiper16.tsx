@@ -71,6 +71,7 @@ export default function Skiper16() {
 
   return (
     <section ref={container} className="relative w-full pt-[20vh] pb-[50vh]" style={{ backgroundColor: "#fef3ea" }}>
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'url(/flowerrrr.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }} />
       {products.map((product, i) => {
         const targetScale = Math.max(0.5, 1 - (products.length - i - 1) * 0.1);
         return (
