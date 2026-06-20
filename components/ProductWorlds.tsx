@@ -24,9 +24,13 @@ export default function ProductWorlds() {
   const clipsRef = useRef<HTMLDivElement[]>([]);
   const bgRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const isMobileRef = useRef(false);
 
   useEffect(() => {
-    if (window.innerWidth < 768) setIsMobile(true);
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+      isMobileRef.current = true;
+    }
   }, []);
 
   useEffect(() => {
@@ -46,15 +50,17 @@ export default function ProductWorlds() {
         onUpdate: (self) => {
           const p = self.progress;
 
-          products.forEach((_, i) => {
-            if (i === products.length - 1) return;
-            const layerStart = i / products.length;
-            const layerEnd = (i + 1) / products.length;
-            const local = (p - layerStart) / (layerEnd - layerStart);
-            const clamped = Math.min(1, Math.max(0, local));
-            const clip = clips[i];
-            if (clip) clip.style.clipPath = `inset(0 0 ${clamped * 100}% 0)`;
-          });
+          if (!isMobileRef.current) {
+            products.forEach((_, i) => {
+              if (i === products.length - 1) return;
+              const layerStart = i / products.length;
+              const layerEnd = (i + 1) / products.length;
+              const local = (p - layerStart) / (layerEnd - layerStart);
+              const clamped = Math.min(1, Math.max(0, local));
+              const clip = clips[i];
+              if (clip) clip.style.clipPath = `inset(0 0 ${clamped * 100}% 0)`;
+            });
+          }
 
           const segProgress = p * colorSegments;
           const fromIdx = Math.min(Math.floor(segProgress), colorSegments - 1);
@@ -74,7 +80,7 @@ export default function ProductWorlds() {
     }, stickyRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   const activeProducts = isMobile ? [products[0]] : products;
 
@@ -129,6 +135,7 @@ export default function ProductWorlds() {
                 sizes="100vw"
               />
 
+              {!isMobile && (
               <div className="absolute inset-x-0 z-[2]" style={{ top: '-8%', bottom: 0, transform: 'translate(-20px, -28px) scale(0.3)', transformOrigin: 'center center' }}>
                 <Image
                   src="/assets/circlebehindgrandpa.png"
@@ -138,6 +145,8 @@ export default function ProductWorlds() {
                   priority
                 />
               </div>
+)}
+              {!isMobile && (
               <div className="absolute inset-0 z-[3]" style={{ transform: 'translate(-20px, -48px) scale(0.34)', transformOrigin: 'center center' }}>
                 <Image
                   src="/assets/loadinggrandfather.png"
@@ -147,6 +156,7 @@ export default function ProductWorlds() {
                   priority
                 />
               </div>
+)}
             </div>
           );
         })}
