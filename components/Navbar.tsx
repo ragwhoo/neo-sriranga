@@ -40,9 +40,9 @@ export default function Navbar() {
   const hamburgerColor = isOpen ? '#8B1A1A' : c;
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-8 py-4">
+    <nav className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-6 md:px-10 py-4">
       <Link href="/" className="relative z-[70]">
-        <div className="w-20 h-10" style={{
+        <div className="w-28 h-14" style={{
           backgroundColor: hamburgerColor,
           maskImage: 'url(/srirangalogo.png)',
           maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center',
