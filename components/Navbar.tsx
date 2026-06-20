@@ -7,7 +7,7 @@ import FlowingMenu from './FlowingMenu';
 
 const menuItems = [
   { link: '#products', text: 'Products', image: '/products/bisibelebath.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#fba20d', marqueeTextColor: '#650f09', borderColor: '#8B1A1A30' },
-  { link: '/recipes', text: 'Recipes', image: '/products/puliogare.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#ff5a5a', marqueeTextColor: '#a80000', borderColor: '#8B1A1A30' },
+  { link: '#recipes', text: 'Recipes', image: '/products/puliogare.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#ff5a5a', marqueeTextColor: '#a80000', borderColor: '#8B1A1A30' },
   { link: '#story', text: 'Story', image: '/products/rasam.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#650f09', marqueeTextColor: '#fba20d', borderColor: '#8B1A1A30' },
   { link: '#contact', text: 'Contact', image: '/products/sambar.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#8B1A1A', marqueeTextColor: '#fef3ea', borderColor: '#8B1A1A30' },
 ];

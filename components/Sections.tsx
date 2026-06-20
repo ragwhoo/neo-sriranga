@@ -80,7 +80,7 @@ export default function Sections() {
               </div>
             </motion.div>
             <motion.nav variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.07, delayChildren: 0.02 } } }} aria-label="Footer navigation" className="grid w-full max-w-[540px] grid-cols-2 gap-y-8 sm:grid-cols-3">
-              {[{ title: 'Products', links: [{ label: 'Our Products', href: '#products' }, { label: 'Recipes', href: '/recipes' }] }, { title: 'Company', links: [{ label: 'Our Story', href: '#story' }, { label: 'Contact', href: '#contact' }] }, { title: 'Connect', links: [{ label: 'Instagram', href: 'https://instagram.com' }, { label: 'WhatsApp', href: 'https://wa.me/919999999999' }, { label: 'Email', href: 'mailto:hello@srirangaorganics.com' }] }].map(col => (
+              {[{ title: 'Products', links: [{ label: 'Our Products', href: '#products' }, { label: 'Recipes', href: '#recipes' }] }, { title: 'Company', links: [{ label: 'Our Story', href: '#story' }, { label: 'Contact', href: '#contact' }] }, { title: 'Connect', links: [{ label: 'Instagram', href: 'https://instagram.com' }, { label: 'WhatsApp', href: 'https://wa.me/919999999999' }, { label: 'Email', href: 'mailto:hello@srirangaorganics.com' }] }].map(col => (
                 <motion.div key={col.title} variants={{ hidden: { opacity: 0, y: 18, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { type: 'spring', duration: 0.6, bounce: 0 } } }}>
                   <h3 className="text-md leading-none font-normal tracking-wide text-white/80">{col.title}</h3>
                   <motion.ul variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04 } } }} className="mt-3 flex flex-col gap-3">
