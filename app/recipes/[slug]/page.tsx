@@ -15,8 +15,10 @@ export default function RecipePage() {
   const [baseColor, setBaseColor] = useState(recipe?.color || '#fef3ea');
 
   useLayoutEffect(() => {
+    document.documentElement.style.transform = '';
     document.documentElement.scrollTop = 0;
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    document.body.scrollTop = 0;
+    history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
 
     const lenis = new Lenis({
