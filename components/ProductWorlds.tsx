@@ -23,15 +23,8 @@ export default function ProductWorlds() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const clipsRef = useRef<HTMLDivElement[]>([]);
   const bgRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const isMobileRef = useRef(false);
-
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      setIsMobile(true);
-      isMobileRef.current = true;
-    }
-  }, []);
+  const isMobileRef = useRef(typeof window !== 'undefined' && window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(isMobileRef.current);
 
   useEffect(() => {
     const clips = clipsRef.current;
@@ -162,7 +155,7 @@ export default function ProductWorlds() {
         })}
       </div>
 
-      <div className="h-[400vh]" />
+      <div className={isMobile ? "h-screen" : "h-[400vh]"} />
     </>
   );
 }
