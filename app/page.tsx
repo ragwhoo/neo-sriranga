@@ -96,6 +96,13 @@ export default function Home() {
     document.body.style.overflow = '';
     loadingRef.current = false;
     setIsLoading(false);
+
+    if (window.location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(window.location.hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+    }
   };
 
   return (
