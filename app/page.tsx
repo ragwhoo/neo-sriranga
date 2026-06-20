@@ -10,16 +10,18 @@ import ProductWorlds from '@/components/ProductWorlds';
 import Sections from '@/components/Sections';
 
 export default function Home() {
+  const loadingRef = useRef(true);
   const [isLoading, setIsLoading] = useState(() => {
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       loadingRef.current = false;
       return false;
     }
-    document.body.style.overflow = 'hidden';
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
     return true;
   });
   const lenisRef = useRef<Lenis | null>(null);
-  const loadingRef = useRef(true);
   const vignetteRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
