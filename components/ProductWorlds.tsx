@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,22 +8,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  {
-    image: '/products/sambar.png',
-    bgColor: '#8B1A1A',
-  },
-  {
-    image: '/products/bisibelebath.png',
-    bgColor: '#D4782B',
-  },
-  {
-    image: '/products/rasam.png',
-    bgColor: '#C0392B',
-  },
-  {
-    image: '/products/puliogare.png',
-    bgColor: '#650f09',
-  },
+  { desktop: '/products/sambar.png', mobile: '/mobile/39.png', bgColor: '#8B1A1A' },
+  { desktop: '/products/bisibelebath.png', mobile: '/mobile/40.png', bgColor: '#D4782B' },
+  { desktop: '/products/rasam.png', mobile: '/mobile/41.png', bgColor: '#C0392B' },
+  { desktop: '/products/puliogare.png', mobile: '/mobile/42.png', bgColor: '#650f09' },
 ];
 
 function hexToRgb(hex: string) {
@@ -35,6 +23,11 @@ export default function ProductWorlds() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const clipsRef = useRef<HTMLDivElement[]>([]);
   const bgRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 768) setIsMobile(true);
+  }, []);
 
   useEffect(() => {
     const clips = clipsRef.current;
@@ -99,7 +92,7 @@ export default function ProductWorlds() {
           const originalIndex = products.length - 1 - ri;
           return (
             <div
-              key={product.image}
+              key={isMobile ? product.mobile : product.desktop}
               ref={(el) => { if (el) clipsRef.current[originalIndex] = el; }}
               className="absolute inset-0"
               style={{
@@ -126,8 +119,8 @@ export default function ProductWorlds() {
               </div>
 
               <Image
-                src={product.image}
-                alt={`${product.image.replace('/products/', '').replace('.png', '')} product`}
+                src={isMobile ? product.mobile : product.desktop}
+                alt={`${(isMobile ? product.mobile : product.desktop).replace('/products/', '').replace('/mobile/', '').replace('.png', '')} product`}
                 fill
                 className="object-cover"
                 priority={originalIndex === 0}
