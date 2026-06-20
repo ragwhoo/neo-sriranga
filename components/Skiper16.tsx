@@ -2,27 +2,26 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 
 const products = [
   {
     title: "Sambar Mix",
-    src: "/products/sambar.png",
+    src: "https://picsum.photos/seed/sriranga-sambar/800/600",
     color: "#a80000",
   },
   {
     title: "Bisibelebath Mix",
-    src: "/products/bisibelebath.png",
+    src: "https://picsum.photos/seed/sriranga-bisibelebath/800/600",
     color: "#fba20d",
   },
   {
     title: "Puliyogare Mix",
-    src: "/products/puliogare.png",
+    src: "https://picsum.photos/seed/sriranga-puliyogare/800/600",
     color: "#650f09",
   },
   {
     title: "Rasam Mix",
-    src: "/products/rasam.png",
+    src: "https://picsum.photos/seed/sriranga-rasam/800/600",
     color: "#ff5a5a",
   },
 ];
@@ -57,7 +56,7 @@ const StickyCard = ({
         className="relative -top-1/4 flex flex-col overflow-hidden w-[90vw] max-w-[600px] aspect-[4/3] origin-top"
         key={title}
       >
-        <Image src={src} alt={title} fill className="object-cover" priority />
+        <img src={src} alt={title} className="h-full w-full object-cover" />
       </motion.div>
     </div>
   );
