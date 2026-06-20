@@ -41,7 +41,7 @@ export default function Sections() {
             >
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <div data-pc className="absolute inset-0" style={{ backgroundColor: p.color, clipPath: 'circle(32px at 50% 50%)' }} />
-                <motion.div className="absolute -inset-2 z-[1]" whileHover={{ y: -8 }} transition={{ duration: 0.5, ease: 'easeOut' }} style={{ top: 16, left: -8, right: -8, bottom: -8 }}>
+                <motion.div className="absolute -inset-2 z-[1]" whileHover={{ y: -4 }} transition={{ duration: 0.5, ease: 'easeOut' }} style={{ top: 12, left: -8, right: -8, bottom: -8 }}>
                   <Image src={p.img} alt={p.name} fill className="object-cover" />
                 </motion.div>
               </div>
