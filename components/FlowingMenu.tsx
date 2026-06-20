@@ -84,6 +84,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeInnerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.core.Tween | null>(null);
+  const hoverTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const [repetitions, setRepetitions] = useState(4);
 
   const animationDefaults: gsap.TweenVars = { duration: 0.6, ease: 'expo' };
@@ -142,17 +143,21 @@ const MenuItem: React.FC<MenuItemProps> = ({
       if (animationRef.current) {
         animationRef.current.kill();
       }
+      if (hoverTimelineRef.current) {
+        hoverTimelineRef.current.kill();
+      }
     };
   }, [text, image, repetitions, speed]);
 
   const handleMouseEnter = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
+    if (hoverTimelineRef.current) hoverTimelineRef.current.kill();
     const rect = itemRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
     const edge = findClosestEdge(x, y, rect.width, rect.height);
 
-    gsap
+    hoverTimelineRef.current = gsap
       .timeline({ defaults: animationDefaults })
       .set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .set(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0)
@@ -161,12 +166,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
 
   const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current) return;
+    if (hoverTimelineRef.current) hoverTimelineRef.current.kill();
     const rect = itemRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
     const edge = findClosestEdge(x, y, rect.width, rect.height);
 
-    gsap
+    hoverTimelineRef.current = gsap
       .timeline({ defaults: animationDefaults })
       .to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
       .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
