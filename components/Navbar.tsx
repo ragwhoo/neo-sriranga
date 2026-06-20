@@ -40,8 +40,7 @@ export default function Navbar() {
   const hamburgerColor = isOpen ? '#8B1A1A' : c;
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-[70] px-6 md:px-10 py-4">
-      <div className="mx-auto flex items-center justify-between max-w-[1440px]">
+    <nav className="fixed top-0 inset-x-0 z-[70] flex items-center justify-between px-6 md:px-10 py-4">
       <Link href="/" className="relative z-[70]">
         <div className="w-28 h-14" style={{
           backgroundColor: hamburgerColor,
@@ -56,7 +55,6 @@ export default function Navbar() {
         <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '0px' : '24px', backgroundColor: hamburgerColor, opacity: isOpen ? 0 : 1 }} />
         <span className="block h-[2px] rounded-full transition-all duration-300" style={{ width: isOpen ? '24px' : '24px', backgroundColor: hamburgerColor, transform: isOpen ? 'rotate(-45deg) translate(5px,-6px)' : 'none' }} />
       </button>
-      </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div

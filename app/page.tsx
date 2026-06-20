@@ -48,7 +48,7 @@ export default function Home() {
       if (!loadingRef.current) {
         ScrollTrigger.update();
       }
-      const target = lenis.isScrolling ? 4 : 1;
+      const target = loadingRef.current ? 1 : (lenis.isScrolling ? 4 : 1);
       speedMult += (target - speedMult) * 0.08;
       bbigAngle += 0.12 * speedMult;
       bbigAngle %= 360;
