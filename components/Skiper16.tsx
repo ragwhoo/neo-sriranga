@@ -53,7 +53,7 @@ const StickyCard = ({
           scale,
           top: `calc(-5vh + ${i * 20 + 250}px)`,
         }}
-        className="relative -top-1/4 flex flex-col overflow-hidden w-[90vw] max-w-[600px] aspect-[4/3] origin-top rounded-3xl"
+        className="relative -top-1/4 flex flex-col overflow-hidden w-[95vw] max-w-[1200px] aspect-[16/9] origin-top rounded-3xl"
         key={title}
       >
         <img src={src} alt={title} className="h-full w-full object-cover rounded-3xl" />
