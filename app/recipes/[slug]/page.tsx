@@ -8,6 +8,7 @@ import Navbar from '@/components/Navbar';
 import { recipes } from '@/lib/recipes';
 import { useState, useLayoutEffect } from 'react';
 import Lenis from 'lenis';
+import { menuOpen } from '@/lib/shared';
 
 export default function RecipePage() {
   const { slug } = useParams();
@@ -30,7 +31,9 @@ export default function RecipePage() {
     lenis.scrollTo(0, { immediate: true });
 
     function raf(time: number) {
-      lenis.raf(time);
+      if (!menuOpen.value) {
+        lenis.raf(time);
+      }
       requestAnimationFrame(raf);
     }
     const rafId = requestAnimationFrame(raf);

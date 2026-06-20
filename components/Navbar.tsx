@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import FlowingMenu from './FlowingMenu';
+import { menuOpen } from '@/lib/shared';
 
 const menuItems = [
   { link: '#products', text: 'Products', image: '/products/bisibelebath.png', bgColor: '#fef3ea', textColor: '#8B1A1A', marqueeBgColor: '#fba20d', marqueeTextColor: '#650f09', borderColor: '#8B1A1A30' },
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [onDarkBg, setOnDarkBg] = useState(true);
 
   useEffect(() => {
+    menuOpen.value = isOpen;
     if (isOpen) { document.body.style.overflow = 'hidden'; }
     else { document.body.style.overflow = ''; }
     return () => { document.body.style.overflow = ''; };
