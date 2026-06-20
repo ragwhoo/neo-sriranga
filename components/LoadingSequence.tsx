@@ -82,7 +82,7 @@ export default function LoadingSequence({ onComplete }: { onComplete: () => void
   }, [imagesLoaded, onComplete]);
 
   return (
-    <div ref={containerRef} className="fixed inset-0 z-[100] overflow-hidden">
+    <div id="loading-screen" ref={containerRef} className="fixed inset-0 z-[100] overflow-hidden">
       <div ref={grainRef} className="absolute inset-0" style={{ backgroundColor: '#8B1A1A' }}>
         <Image
           src="/grain.png"

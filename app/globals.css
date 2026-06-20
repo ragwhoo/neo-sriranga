@@ -12,6 +12,10 @@
   to { opacity: 0.6; }
 }
 
+@media (max-width: 767px) {
+  #loading-screen { display: none !important; }
+}
+
 :root {
   --color-sambar: #8B1A1A;
   --color-bisibelebath: #D4782B;
