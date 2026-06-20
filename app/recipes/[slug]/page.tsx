@@ -4,11 +4,9 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Clock, Flame, Users, ArrowLeft } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import { recipes } from '@/lib/recipes';
 import { useState, useLayoutEffect } from 'react';
 import Lenis from 'lenis';
-import { menuOpen } from '@/lib/shared';
 
 export default function RecipePage() {
   const { slug } = useParams();
@@ -31,9 +29,7 @@ export default function RecipePage() {
     lenis.scrollTo(0, { immediate: true });
 
     function raf(time: number) {
-      if (!menuOpen.value) {
-        lenis.raf(time);
-      }
+      lenis.raf(time);
       requestAnimationFrame(raf);
     }
     const rafId = requestAnimationFrame(raf);
@@ -68,7 +64,13 @@ export default function RecipePage() {
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: '#fef3ea' }}>
-      <Navbar />
+      <Link
+        href="/"
+        className="fixed top-4 left-6 z-[70] inline-flex items-center gap-2 text-sm text-[#8B1A1A]/60 hover:text-[#8B1A1A] transition-colors"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Home
+      </Link>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
