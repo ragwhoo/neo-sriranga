@@ -18,7 +18,7 @@ export default function Sections() {
     <>
       <section id="our-roots" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
         <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-4">Our Roots</motion.p>
-        <motion.h2 {...blurFadeIn} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-6">Rooted in Tradition. Crafted for Today.</motion.h2>
+        <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-6">Rooted in Tradition. Crafted for Today.</motion.h2>
         <motion.p {...blurFadeIn} className="text-lg md:text-xl leading-relaxed text-[#8B1A1A]/70 max-w-2xl">At Sriranga Organics, every product begins with a simple belief: good food should come from honest ingredients. Inspired by traditional recipes and time-tested methods, we create products that celebrate the richness of natural farming and authentic Indian flavors.</motion.p>
       </section>
 
@@ -26,7 +26,7 @@ export default function Sections() {
 
       <section id="products" className="relative flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
         <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-4">Featured Products</motion.p>
-        <motion.h2 {...blurFadeIn} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-4">Inspired by Tradition</motion.h2>
+        <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-4">Inspired by Tradition</motion.h2>
         <motion.p {...blurFadeIn} className="text-lg md:text-xl leading-relaxed text-[#8B1A1A]/70 max-w-2xl mb-12">A collection of carefully crafted products that celebrate the diversity of Indian ingredients and culinary heritage.</motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-5xl w-full">
           {[
@@ -55,7 +55,7 @@ export default function Sections() {
 
       <section id="story" className="relative flex flex-col justify-center items-center px-6 md:px-8 py-24 text-center">
         <motion.p {...blurFadeIn} className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#8B1A1A]/40 mb-4">About</motion.p>
-        <motion.h2 {...blurFadeIn} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-6">About Sriranga Organics</motion.h2>
+        <motion.h2 {...blurFadeIn} className="text-6xl md:text-7xl lg:text-8xl font-moonbase tracking-wider text-[#8B1A1A] mb-6">About Sriranga Organics</motion.h2>
         <motion.p {...blurFadeIn} className="text-lg md:text-xl leading-relaxed text-[#8B1A1A]/70 max-w-2xl">Rooted in India&apos;s agricultural heritage, we craft genuine, traditional products with transparency and respect for natural ingredients — honoring both the farmer and the consumer.</motion.p>
       </section>
 
