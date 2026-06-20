@@ -51,7 +51,7 @@ const StickyCard = ({
       <motion.div
         style={{
           scale,
-          top: `calc(-5vh + ${i * 20 + 250}px)`,
+          top: `calc(-5vh + ${i * 20 + 80}px)`,
         }}
         className="relative -top-1/4 flex flex-col overflow-hidden w-[95vw] max-w-[1200px] aspect-[16/9] origin-top rounded-3xl"
         key={title}
