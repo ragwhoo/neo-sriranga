@@ -110,9 +110,9 @@ export default function ProductWorlds() {
             >
               <div
                 data-bbigcircle
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0 pointer-events-none animate-[fadeIn_1s_ease-out_forwards]"
                 style={{
-                  opacity: 0.6,
+                  opacity: 0,
                   transform: 'scale(2.5) translate(-15px, 40px) rotate(0deg)',
                   transformOrigin: 'center center',
                 }}

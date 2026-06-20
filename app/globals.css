@@ -7,6 +7,11 @@
   to { transform: scale(2.5) translate(-15px, 40px) rotate(360deg); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.6; }
+}
+
 :root {
   --color-sambar: #8B1A1A;
   --color-bisibelebath: #D4782B;
