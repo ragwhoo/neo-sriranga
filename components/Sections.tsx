@@ -36,6 +36,8 @@ export default function Sections() {
             { name: 'Rasam Mix', desc: 'A tangy and peppery preparation rooted in traditional South Indian cuisine.', img: '/products/rasam.png', color: '#ff5a5a' },
           ].map((p) => (
             <motion.div key={p.name} {...blurFadeIn} className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer"
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
               onMouseEnter={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(100% at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
               onMouseLeave={e => { const c = e.currentTarget.querySelector('[data-pc]') as HTMLElement; if(c) gsap.to(c, { clipPath: 'circle(32px at 50% 50%)', duration: 0.5, ease: 'power2.inOut' }); }}
             >
