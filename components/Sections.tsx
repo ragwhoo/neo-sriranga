@@ -41,14 +41,11 @@ export default function Sections() {
             >
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <div data-pc className="absolute inset-0" style={{ backgroundColor: p.color, clipPath: 'circle(32px at 50% 50%)' }} />
-                <motion.div className="absolute inset-0 z-[1]" whileHover={{ y: -12 }} transition={{ duration: 0.5, ease: 'easeOut' }}>
+                <motion.div className="absolute inset-0 z-[1]" whileHover={{ y: -12 }} transition={{ duration: 0.5, ease: 'easeOut' }} style={{ top: 48 }}>
                   <Image src={p.img} alt={p.name} fill className="object-cover" />
                 </motion.div>
-                <div className="absolute inset-x-0 bottom-0 z-[2] p-6 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-                  <h3 className="text-xl font-['Moonbase_Delta'] tracking-wider text-white mb-1">{p.name}</h3>
-                  <p className="text-sm leading-relaxed text-white/80 line-clamp-2">{p.desc}</p>
-                </div>
               </div>
+              <div className="p-6"><h3 className="text-xl font-['Moonbase_Delta'] tracking-wider text-[#8B1A1A] mb-1">{p.name}</h3><p className="text-sm leading-relaxed text-[#8B1A1A]/60">{p.desc}</p></div>
             </motion.div>
           ))}
         </div>
