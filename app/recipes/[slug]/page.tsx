@@ -57,7 +57,6 @@ export default function RecipePage() {
     <main className="min-h-screen" style={{ backgroundColor: '#fef3ea' }}>
       <Navbar />
       <motion.div
-        className="pt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
