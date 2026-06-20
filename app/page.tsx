@@ -39,6 +39,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      document.body.style.overflow = '';
+      loadingRef.current = false;
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     let bbigAngle = 0;
