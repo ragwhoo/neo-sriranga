@@ -76,7 +76,11 @@ export default function ProductWorlds() {
     return () => ctx.revert();
   }, []);
 
-  return (
+  return isMobile ? (
+    <div className="sticky top-0 h-screen overflow-hidden">
+      <Image src="/sambarmobile.png" alt="Sriranga Organics" fill className="object-cover" priority />
+    </div>
+  ) : (
     <>
       <div
         ref={stickyRef}
