@@ -76,11 +76,9 @@ export default function ProductWorlds() {
     return () => ctx.revert();
   }, []);
 
-  return isMobile ? (
-    <div className="sticky top-0 h-screen overflow-hidden">
-      <Image src="/sambarmobile.png" alt="Sriranga Organics" fill className="object-cover" priority />
-    </div>
-  ) : (
+  const activeProducts = isMobile ? [products[0]] : products;
+
+  return (
     <>
       <div
         ref={stickyRef}
@@ -89,18 +87,18 @@ export default function ProductWorlds() {
         <div
           ref={bgRef}
           className="absolute inset-0"
-          style={{ backgroundColor: products[0].bgColor }}
+          style={{ backgroundColor: activeProducts[0].bgColor }}
         />
 
-        {[...products].reverse().map((product, ri) => {
-          const originalIndex = products.length - 1 - ri;
+        {[...activeProducts].reverse().map((product, ri) => {
+          const originalIndex = activeProducts.length - 1 - ri;
           return (
             <div
               key={isMobile ? product.mobile : product.desktop}
               ref={(el) => { if (el) clipsRef.current[originalIndex] = el; }}
               className="absolute inset-0"
               style={{
-                clipPath: originalIndex < products.length - 1
+                clipPath: originalIndex < activeProducts.length - 1
                   ? 'inset(0 0 0% 0)'
                   : undefined,
               }}
