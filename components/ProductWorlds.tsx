@@ -39,6 +39,8 @@ export default function ProductWorlds() {
     if (!bg) return;
 
     const ctx = gsap.context(() => {
+      if (isMobileRef.current) return;
+
       const bgColors = products.map((p) => p.bgColor);
       const colorSegments = bgColors.length - 1;
 
@@ -50,9 +52,8 @@ export default function ProductWorlds() {
         onUpdate: (self) => {
           const p = self.progress;
 
-          if (!isMobileRef.current) {
-            products.forEach((_, i) => {
-              if (i === products.length - 1) return;
+          products.forEach((_, i) => {
+            if (i === products.length - 1) return;
               const layerStart = i / products.length;
               const layerEnd = (i + 1) / products.length;
               const local = (p - layerStart) / (layerEnd - layerStart);
@@ -60,7 +61,6 @@ export default function ProductWorlds() {
               const clip = clips[i];
               if (clip) clip.style.clipPath = `inset(0 0 ${clamped * 100}% 0)`;
             });
-          }
 
           const segProgress = p * colorSegments;
           const fromIdx = Math.min(Math.floor(segProgress), colorSegments - 1);
