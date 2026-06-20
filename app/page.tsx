@@ -15,6 +15,7 @@ export default function Home() {
   const loadingRef = useRef(true);
   const vignetteRef = useRef<HTMLDivElement>(null);
   const bbigCirclesRef = useRef<HTMLElement[]>([]);
+  const bbigAngleRef = useRef(0);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -31,7 +32,6 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    let bbigAngle = 0;
     let speedMult = 1;
 
     const lenis = new Lenis({
@@ -40,22 +40,22 @@ export default function Home() {
       orientation: 'vertical',
       smoothWheel: true,
     });
-
     gsap.ticker.add((time) => {
       if (!loadingRef.current) {
         lenis.raf(time * 1000);
       }
+
       if (!loadingRef.current) {
         ScrollTrigger.update();
       }
       const target = loadingRef.current ? 1 : (lenis.isScrolling ? 4 : 1);
       speedMult += (target - speedMult) * 0.08;
-      bbigAngle += 0.12 * speedMult;
-      bbigAngle %= 360;
+      bbigAngleRef.current += 0.12 * speedMult;
+      bbigAngleRef.current %= 360;
       const circles = bbigCirclesRef.current;
       for (let i = 0; i < circles.length; i++) {
         circles[i].style.transform =
-          `scale(2.5) translate(-15px, 40px) rotate(${bbigAngle}deg)`;
+          `scale(2.5) translate(-15px, 40px) rotate(${bbigAngleRef.current}deg)`;
       }
     });
     gsap.ticker.lagSmoothing(0);
@@ -99,6 +99,7 @@ export default function Home() {
     loadingRef.current = false;
     setIsLoading(false);
 
+    bbigAngleRef.current = 0;
     bbigCirclesRef.current = Array.from(document.querySelectorAll<HTMLElement>('[data-bbigcircle]'));
 
     if (window.location.hash) {
