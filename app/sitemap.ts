@@ -4,7 +4,7 @@ import { recipes } from '@/lib/recipes';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://srirangaorganics.com';
 
-  const recipeEntries: MetadataRoute.Sitemap[] = recipes.map((recipe) => ({
+  const recipeEntries = recipes.map((recipe) => ({
     url: `${baseUrl}/recipes/${recipe.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
